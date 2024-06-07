@@ -219,27 +219,6 @@ int main(void) {
 
 
     while(1) {
-        if((humi >= 10) && (humi <= 25)) {
-            now_color = 0;
-            printf("현재 색상을 빨강으로 지정합니다.\n");
-        }
-        else if((humi >= 26) && (humi <= 34)) {
-            now_color = 1;
-            printf("현재 색상을 노랑으로 지정합니다.\n");
-        }
-        else if((humi >= 35) && (humi <= 50)) {
-            now_color = 2;
-            printf("현재 색상을 초록으로 지정합니다.\n");
-        }
-        else if((humi >= 51) && (humi <= 64)) {
-            now_color = 3;
-            printf("현재 색상을 시안으로 지정합니다.\n");
-        }
-        else if((humi >= 65) && (humi <= 80)) {
-            now_color = 4;
-            printf("현재 색상을 파랑으로 지정합니다.\n");
-        }
-
         for(int i = 0; i < 5; i++) {
             read_dht22_dat();
             h_arr[i] = h;
@@ -271,6 +250,28 @@ int main(void) {
                 printf("밝기를 30%%로 지정합니다.\n");
             }
         }
+
+        if((humi >= 10) && (humi <= 25)) {
+            now_color = 0;
+            printf("현재 색상을 빨강으로 지정합니다.\n");
+        }
+        else if((humi >= 26) && (humi <= 34)) {
+            now_color = 1;
+            printf("현재 색상을 노랑으로 지정합니다.\n");
+        }
+        else if((humi >= 35) && (humi <= 50)) {
+            now_color = 2;
+            printf("현재 색상을 초록으로 지정합니다.\n");
+        }
+        else if((humi >= 51) && (humi <= 64)) {
+            now_color = 3;
+            printf("현재 색상을 시안으로 지정합니다.\n");
+        }
+        else if((humi >= 65) && (humi <= 80)) {
+            now_color = 4;
+            printf("현재 색상을 파랑으로 지정합니다.\n");
+        }
+
         colorSet(now_color, now_brightness);
 
     }
