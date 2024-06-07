@@ -176,8 +176,6 @@ void myInterrupt2(void) {
 int main(void) {
     printf("프로그램 시작\n");
 
-    last_detect_time = clock();
-
     if(wiringPiSetup() == -1)
     {
         fprintf(stdout, "Unable to start wiringPi :%s\n", strerror(errno));
