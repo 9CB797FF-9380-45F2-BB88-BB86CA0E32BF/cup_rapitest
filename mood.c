@@ -217,7 +217,6 @@ int main(void) {
     digitalWrite(LEDP, HIGH);
     printf("LED 전원을 켭니다\n");
 
-    colorSet(1, 2);
 
     while(1) {
         if((humi >= 10) && (humi <= 25)) {
@@ -245,7 +244,7 @@ int main(void) {
             read_dht22_dat();
             h_arr[i] = h;
             printf("평균계산을 위한 센서읽기 %d 회\n", i);
-            delay(60000); // 1분
+            delay(3000); // 1분
         }
 
         h_average = 0;
