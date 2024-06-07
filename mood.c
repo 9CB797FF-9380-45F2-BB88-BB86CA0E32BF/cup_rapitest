@@ -153,8 +153,9 @@ void colorSet(int color, int brightness) {
 void myInterrupt(void) {
     printf("사람이 감지되었습니다.\n");
     if(mode) {
-        now_brightness = 255;
+        now_brightness = 2;
         printf("밝기를 100%%으로 지정합니다.\n");
+        colorSet(now_color, now_brightness);
     }
 }
 
@@ -217,7 +218,7 @@ int main(void) {
     digitalWrite(LEDP, HIGH);
     printf("LED 전원을 켭니다\n");
 
-    setColor(2, 2);
+    colorSet(2, 2);
 
 
     while(1) {
@@ -273,7 +274,6 @@ int main(void) {
             now_color = 4;
             printf("현재 색상을 파랑으로 지정합니다.\n");
         }
-
         colorSet(now_color, now_brightness);
 
     }
