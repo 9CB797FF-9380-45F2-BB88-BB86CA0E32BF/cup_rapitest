@@ -217,6 +217,8 @@ int main(void) {
     digitalWrite(LEDP, HIGH);
     printf("LED 전원을 켭니다\n");
 
+    setColor(2, 2);
+
 
     while(1) {
         for(int i = 0; i < 5; i++) {
