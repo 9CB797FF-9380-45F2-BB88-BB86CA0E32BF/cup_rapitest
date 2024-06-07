@@ -147,7 +147,7 @@ void colorSet(int color, int brightness) {
     softPwmWrite(LEDR, r * power[brightness]);
     softPwmWrite(LEDG, g * power[brightness]);
     softPwmWrite(LEDB, b * power[brightness]);
-    printf("LED를 (색상:%d, 밝기:%d)로 설정합니다.", now_color, now_brightness);
+    printf("LED를 (색상:%d, 밝기:%d)로 설정합니다.\n", now_color, now_brightness);
 }
 
 void myInterrupt(void) {
