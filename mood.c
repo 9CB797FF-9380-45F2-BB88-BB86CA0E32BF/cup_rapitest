@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <wiringPiSPI.h>
 #include <softPwm.h>
-#include <time.h>
 
 #define CS_MCP3208 8  
 #define SPI_CHANNEL 0
@@ -31,7 +30,6 @@ int now_color = 0; // 빨(0), 노(1), 초(2), 시안(3), 파(4)
 int now_brightness = 0; // 0:30%, 1:65%, 2:100%
 int user_setting_brightness = 0; // 0:30%, 1:65%, 2:100%
 int mode = 1; // 수동(0), 자동(1)
-clock_t last_detect_time;
 
 static u_int8_t sizecvt(const int read) {
     if (read > 255 || read < 0) {
@@ -161,18 +159,18 @@ void myInterrupt(void) {
 
 void myInterrupt2(void) {
     printf("근접센서가 감지되었습니다.\n");
-    if((long)(clock()-last_detect_time) < 500) {
-        mode = 1;
-        printf("모드를 자동으로 설정합니다.\n");
-    }
-    else {
-        last_detect_time = clock();
-        mode = 0;
-        printf("모드를 수동으로 설정합니다.\n");
-        now_brightness = user_setting_brightness = (user_setting_brightness+1)%3;
-        printf("밝기를 %d로 지정합니다.\n", now_brightness);
-        colorSet(now_color, now_brightness);
-    }
+        if(user_setting_brightness == 2) {
+            mode = 1;
+            printf("모드를 자동으로 설정합니다.\n");
+            user_setting_brightness = 0;
+        }
+        else {
+            mode = 0;
+            printf("모드를 수동으로 설정합니다.\n");
+            now_brightness = user_setting_brightness = (user_setting_brightness+1)%3;
+            printf("밝기를 %d로 지정합니다.\n", now_brightness);
+            colorSet(now_color, now_brightness);
+        }
 }
 
 int main(void) {
