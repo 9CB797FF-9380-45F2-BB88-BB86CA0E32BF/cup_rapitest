@@ -30,7 +30,7 @@ int light_value = 0;
 int now_color = 0; // 빨(0), 노(1), 초(2), 시안(3), 파(4)
 int now_brightness = 0; // 0:30%, 1:65%, 2:100%
 int user_setting_brightness = 0; // 0:30%, 1:65%, 2:100%
-int mode = 0; // 수동(0), 자동(1)
+int mode = 1; // 수동(0), 자동(1)
 clock_t last_detect_time;
 
 static u_int8_t sizecvt(const int read) {
@@ -262,11 +262,11 @@ int main(void) {
                 now_brightness = 2;
                 printf("밝기를 100%%로 지정합니다.\n");
             }
-            if(light_value <= 1000) {
+            else if(light_value <= 1000) {
                 now_brightness = 1;
                 printf("밝기를 65%%로 지정합니다.\n");
             }
-            if(light_value <= 1500) {
+            else if(light_value <= 1500) {
                 now_brightness = 0;
                 printf("밝기를 30%%로 지정합니다.\n");
             }
