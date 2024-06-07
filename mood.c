@@ -258,15 +258,15 @@ int main(void) {
         if(mode) {
             light_value = read_mcp3208_adc(LIGHT);
             printf("조도: %d\n", light_value);
-            if(light_value <= 500) {
+            if((light_value >= 0) && (light_value < 1000)) { // 최대3000 밝을때 1000이하
                 now_brightness = 2;
                 printf("밝기를 100%%로 지정합니다.\n");
             }
-            else if(light_value <= 1000) {
+            else if((light_value >= 1000) && (light_value < 3000)) {
                 now_brightness = 1;
                 printf("밝기를 65%%로 지정합니다.\n");
             }
-            else if(light_value <= 1500) {
+            else if((light_value >= 3000) && (light_value <= 4096)) {
                 now_brightness = 0;
                 printf("밝기를 30%%로 지정합니다.\n");
             }
