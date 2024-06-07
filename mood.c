@@ -42,9 +42,9 @@ static u_int8_t sizecvt(const int read) {
 }
 
 static int read_dht22_dat() {
-    uint8_t laststate = HIGH;
-    uint8_t counter = 0;
-    uint8_t j = 0, i;
+    u_int8_t laststate = HIGH;
+    u_int8_t counter = 0;
+    u_int8_t j = 0, i;
     dht22_dat[0] = dht22_dat[1] = dht22_dat[2] = dht22_dat[3] = dht22_dat[4] = 0;
     pinMode(DHTPIN, OUTPUT);
     digitalWrite(DHTPIN, HIGH);
@@ -114,7 +114,7 @@ void sig_handler (int signo) {
 void colorSet(int color, int brightness) {
     // color: 빨(0), 노(1), 초(2), 시안(3), 파(4)
     // brightness: 0:30%, 1:65%, 2:100%
-    float power[3] = [0.3, 0.65, 1];
+    float power[3] = {0.3, 0.65, 1};
     int r = 0; 
     int g = 0;
     int b = 0;
